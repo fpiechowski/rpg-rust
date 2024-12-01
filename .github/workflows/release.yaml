@@ -1,4 +1,4 @@
-name: Build and Release
+name: Release
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - 'v*'
 
 jobs:
-  build:
-    name: Build and Package
+  release:
+    name: Package and Create Release
     runs-on: ubuntu-latest
 
     steps:
@@ -34,23 +34,6 @@ jobs:
         with:
           name: packaged-crate
           path: target/package/*.crate
-
-  release:
-    name: Create Release
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Install GitHub CLI
-        run: sudo apt-get install -y gh
-
-      - name: Authenticate GitHub CLI
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh auth setup-git
 
       - name: Create GitHub release
         env:
