@@ -1,0 +1,11 @@
+[package]
+name = "rpg"
+version = "0.1.0"
+edition = "2021"
+authors = ["Filip Piechowski <f.piechowski@gmail.com>"]
+description = "Role Playing Game Framework"
+
+[dependencies]
+rand = "0.8.5"
+rand_distr = "0.4.3"
+num = "0.4.3"
